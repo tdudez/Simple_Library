@@ -15,8 +15,27 @@ public class Borrow {
             Text[] text,
             Journal[] journal ){
         Date date = new Date();
+        this.id = id;
+        this.textamount = textamount;
+        this.journalamount = journalamount;
+        settext(text);
+        setjournal(journal);
         bdate += date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
         rdate += 14+date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+    }
+
+    private void settext(Text[] text){
+        int i;
+        for(i=0;i<textamount;i++){
+            this.text[i]=text[i];
+        }
+    }
+    
+    private void setjournal(Journal[] journal){
+        int i;
+        for(i=0;i<journalamount;i++){
+            this.journal[i]=journal[i];
+        }
     }
 
     public int getid(){

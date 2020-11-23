@@ -1,10 +1,82 @@
+import java.util.Scanner;
+
 public class Doing {
     static Text[] text = new Text[15];
     static Journal[] journal = new Journal[10];
-    Text[] btext = new Text[10];
-    Journal[] bjournal = new Journal[5];
+    static Text[] btext = new Text[10];
+    static Journal[] bjournal = new Journal[5];
     public static void main(String[] args) {
+        int tel;
+        String name;
+        String address;
+        int borrowid = 1;
+        int amounttext;
+        int amountjournal;
+        Scanner in = new Scanner(System.in);
+        int i,pick;
+        generatebook();
+
+        System.out.print("tel : ");
+        tel = in.nextInt();
+        System.out.print("name : ");
+        name = in.next();
+        System.out.print("address : ");
+        address = in.next();
         
+        for(i=0;i<10;i++){
+            if(i==0){
+                System.out.print("if you dont want textbook type 'y' ");
+                if(in.next().equalsIgnoreCase("y")){
+                    break;
+                }
+            }
+            showtext();
+            System.out.print("pick book : ");
+            pick = in.nextInt();
+            btext[i] = text[pick];
+            System.out.println("more ? : ");
+            if (in.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        }
+        amounttext=i;
+
+        for(i=0;i<5;i++){
+            if(i==0){
+                System.out.print("if you dont want journal type 'y' ");
+                if(in.next().equalsIgnoreCase("y")){
+                    break;
+                }
+            }
+            showjournal();
+            System.out.print("pick book : ");
+            pick = in.nextInt();
+            btext[i] = text[pick];
+            System.out.println("more ? : ");
+            if (in.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        }
+        amountjournal=i;
+
+        Member member = new Member(tel, name, address, borrowid, amounttext, amountjournal, text, journal);
+
+    }
+
+    static void showtext() {
+        int i,no=1;
+        for(i=0;i<15;i++){
+            System.out.println(no+".  "+text[i].title);
+            no++;
+        }
+    }
+
+    static void showjournal(){
+        int i,no=1;
+        for(i=0;i<10;i++){
+            System.out.println(no+".  "+journal[i].title);
+            no++;
+        }
     }
 
     static void generatebook(){
