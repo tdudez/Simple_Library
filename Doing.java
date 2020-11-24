@@ -25,8 +25,8 @@ public class Doing {
         
         for(i=0;i<10;i++){
             if(i==0){
-                System.out.print("if you dont want textbook type 'y' ");
-                if(in.next().equalsIgnoreCase("y")){
+                System.out.print("Do you want textbook type (Y/N) : ");
+                if(in.next().equalsIgnoreCase("n")){
                     break;
                 }
             }
@@ -34,7 +34,7 @@ public class Doing {
             System.out.print("pick book : ");
             pick = in.nextInt();
             btext[i] = text[pick];
-            System.out.println("more ? : ");
+            System.out.print("more ? (Y/N) : ");
             if (in.next().equalsIgnoreCase("n")) {
                 break;
             }
@@ -43,8 +43,8 @@ public class Doing {
 
         for(i=0;i<5;i++){
             if(i==0){
-                System.out.print("if you dont want journal type 'y' ");
-                if(in.next().equalsIgnoreCase("y")){
+                System.out.print("Do you  want journal type (Y/N) : ");
+                if(in.next().equalsIgnoreCase("n")){
                     break;
                 }
             }
@@ -52,7 +52,7 @@ public class Doing {
             System.out.print("pick book : ");
             pick = in.nextInt();
             btext[i] = text[pick];
-            System.out.println("more ? : ");
+            System.out.print("more ? (Y/N) : ");
             if (in.next().equalsIgnoreCase("n")) {
                 break;
             }
@@ -60,7 +60,7 @@ public class Doing {
         amountjournal=i;
 
         Member member = new Member(tel, name, address, borrowid, amounttext, amountjournal, text, journal);
-
+        printinfo(member);
     }
 
     static void showtext() {
@@ -77,6 +77,27 @@ public class Doing {
             System.out.println(no+".  "+journal[i].title);
             no++;
         }
+    }
+
+    static void printinfo(Member member){
+        Text [] ptext;
+        Journal [] pjournal;
+        ptext = member.getBorrow().gettextbook();
+        pjournal = member.getBorrow().getjournal();
+        System.out.println("\n------------------------------------\n");
+        System.out.println(member.getname());
+        System.out.println("\nTextbook");
+        for(int i = 0;i<member.getBorrow().gettextamount();i++){
+            System.out.println(i+"."+ptext[i].title);
+        }
+        System.out.println("\nJournal");
+        for(int i = 0;i<member.getBorrow().getjournalamount();i++){
+            System.out.println(i+"."+pjournal[i].title);
+        }
+        System.out.println();
+        System.out.println("Borrow date : " + member.getBorrow().getborrowdate());
+        System.out.println("Ruturn date : " + member.getBorrow().getreturndate());
+        System.out.println();
     }
 
     static void generatebook(){

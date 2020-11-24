@@ -1,8 +1,8 @@
 public class Resouce {
-    String isbn;
-    String title;
-    String publication;
-    int year;
+    public String isbn;
+    public String title;
+    public String publication;
+    public int year;
 
     Resouce(String isbn, String title, String publication, int year){
         this.isbn = isbn;

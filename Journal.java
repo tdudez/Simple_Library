@@ -1,6 +1,6 @@
 public class Journal extends Resouce {
-    int vol;
-    int no;
+    public int vol;
+    public int no;
     
     Journal(String isbn, String title, String publication, int year, int vol, int no){
         super(isbn, title, publication, year);

@@ -1,11 +1,12 @@
+import java.util.Calendar;
 import java.util.Date;
 
 public class Borrow {
     private int id;
     private int textamount;
     private int journalamount;
-    private Text [] text = new Text[textamount];
-    private Journal [] journal = new Journal[journalamount];
+    private Text [] text;
+    private Journal [] journal;
     private String bdate; //borrow date
     private String rdate; //return date
 
@@ -14,14 +15,65 @@ public class Borrow {
             int journalamount,
             Text[] text,
             Journal[] journal ){
-        Date date = new Date();
+        this.text = new Text[textamount];
+        this.journal = new Journal[journalamount];
         this.id = id;
         this.textamount = textamount;
         this.journalamount = journalamount;
         settext(text);
         setjournal(journal);
-        bdate += date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
-        rdate += 14+date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        Date date = new Date(); 
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        System.out.println(day);
+
+        bdate = day+"/"+month+"/"+year;
+
+        if(month==1&&month==3&&month==5&&month==7&&month==8&&month==10){
+            if(14+day>31){
+                rdate = (14-31+day) + "/" + (1+month) + "/" + year;
+            }
+            else{
+                rdate = (14+day) + "/" + month + "/" + year;
+            }
+        }
+        else if(month==12){
+            if(14+day>31){
+                rdate = (14-31+day) + "/" + (1+month-12) + "/" + (year+1);
+            }
+            else{
+                rdate = (14+day) + "/" + month + "/" + year;
+            }
+        }
+        else if(month==2){
+            if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)){
+                if(14+day>29){
+                    rdate = (14-29+day) + "/" + (1+month) + "/" + year;
+                }
+                else{
+                    rdate = (14+day) + "/" + month + "/" + year;
+                }
+            }
+            else{
+                if(14+day>28){
+                    rdate = (14-28+day) + "/" + (1+month) + "/" + year;
+                }
+                else{
+                    rdate = (14+day) + "/" + month + "/" + year;
+                }
+            }
+        }
+        else{
+            if(14+day>30){
+                rdate = (14-30+day) + "/" + (1+month-12) + "/" + (year+1);
+            }
+            else{
+                rdate = (14+day) + "/" + month + "/" + year;
+            }
+        }
     }
 
     private void settext(Text[] text){
@@ -65,6 +117,5 @@ public class Borrow {
     public String getreturndate(){
         return rdate;
     }
-    
 
 }
