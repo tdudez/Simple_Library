@@ -88,11 +88,11 @@ public class Doing {
         System.out.println(member.getname());
         System.out.println("\nTextbook");
         for(int i = 0;i<member.getBorrow().gettextamount();i++){
-            System.out.println(i+"."+ptext[i].title);
+            System.out.println((i+1)+"."+ptext[i].title);
         }
         System.out.println("\nJournal");
         for(int i = 0;i<member.getBorrow().getjournalamount();i++){
-            System.out.println(i+"."+pjournal[i].title);
+            System.out.println((i+1)+"."+pjournal[i].title);
         }
         System.out.println();
         System.out.println("Borrow date : " + member.getBorrow().getborrowdate());
