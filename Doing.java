@@ -51,7 +51,7 @@ public class Doing {
             showjournal();
             System.out.print("pick book : ");
             pick = in.nextInt();
-            btext[i] = text[pick-1];
+            bjournal[i] = journal[pick-1];
             System.out.print("more ? (Y/N) : ");
             if (in.next().equalsIgnoreCase("n")) {
                 break;
