@@ -28,8 +28,9 @@ public class Borrow {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-        System.out.println(day);
 
+        month++;
+        
         bdate = day+"/"+month+"/"+year;
 
         if(month==1&&month==3&&month==5&&month==7&&month==8&&month==10){
@@ -68,7 +69,7 @@ public class Borrow {
         }
         else{
             if(14+day>30){
-                rdate = (14-30+day) + "/" + (1+month-12) + "/" + (year+1);
+                rdate = (14-30+day) + "/" + (1+month) + "/" + (year);
             }
             else{
                 rdate = (14+day) + "/" + month + "/" + year;
