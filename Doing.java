@@ -59,7 +59,7 @@ public class Doing {
         }
         amountjournal=i+1;
 
-        Member member = new Member(tel, name, address, borrowid, amounttext, amountjournal, text, journal);
+        Member member = new Member(tel, name, address, borrowid, amounttext, amountjournal, btext, bjournal);
         printinfo(member);
     }
 
