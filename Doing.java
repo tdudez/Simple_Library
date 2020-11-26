@@ -39,7 +39,7 @@ public class Doing {
                 break;
             }
         }
-        amounttext=i;
+        amounttext=i+1;
 
         for(i=0;i<5;i++){
             if(i==0){
@@ -57,7 +57,7 @@ public class Doing {
                 break;
             }
         }
-        amountjournal=i;
+        amountjournal=i+1;
 
         Member member = new Member(tel, name, address, borrowid, amounttext, amountjournal, text, journal);
         printinfo(member);
